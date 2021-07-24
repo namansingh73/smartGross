@@ -1,0 +1,47 @@
+.subscribe {
+  @include widthMain;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+
+  background: var(--gradient-primary);
+  border-radius: 1rem;
+
+  padding: 7% 4%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  font-size: 1.6rem;
+
+  &__text {
+    text-align: center;
+  }
+
+  &__heading {
+    font-size: 3.5rem;
+  }
+
+  &__form {
+    display: flex;
+    border-radius: 50rem;
+    box-shadow: var(--shadow-secondary);
+  }
+
+  &__input {
+    border-top-left-radius: 50rem;
+    border-bottom-left-radius: 50rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    outline: none;
+  }
+
+  &__btn {
+    border-top-right-radius: 50rem;
+    border-bottom-right-radius: 50rem;
+
+    &:hover {
+      transform: translateY(-1px) scaleY(1.03);
+    }
+  }
+}

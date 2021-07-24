@@ -1,0 +1,142 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title SmartGross
+    script(src='https://kit.fontawesome.com/208182354f.js' crossorigin='anonymous')
+    // font-family: 'Permanent Marker', cursive;
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(href='https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap' rel='stylesheet')
+    //
+      font-family: 'Playfair Display', serif;
+      font-family: 'Poppins', sans-serif;
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='./index.css')
+    
+    link(rel="manifest" href="../manifest.json")
+
+  body.body.scrollbar
+    // navbar
+    .navbar
+      nav.navbar__inner.reset-anchor
+        .navbar__hamburger.js--components-function--sidebar__hamburger
+        a(href='/')
+          .navbar__logo.typography-logo-style
+            i.fas.fa-camera-retro
+            |  Groceries
+        ul.navbar__list
+          li.navbar__item
+            a.navbar__link(href='/home')
+              i.fas.fa-home
+          li.navbar__list
+            a.navbar__link(href='/cart')
+              i.fas.fa-shopping-basket
+          
+
+
+    .card.cart
+      .cart__main
+        h2.heading-tertiary.heading-tertiary--2 Smart Bag
+        for products in smartBagData
+          if true
+            .inner-card.reset-anchor
+              .product-inner-card
+                a.product-inner-card__img-box
+                  img.product-inner-card__img(src=`${products.image}` alt='')
+                form(action="").product-inner-card__main
+                  .product-desc
+                    .product-desc
+                      .product-desc__brand 
+                      a.product-desc__name.products__name
+                        | #{products.name} 
+                      .product-desc__price
+                        span.product-desc__price-act &#x20B9;#{products.price}
+                      .product-desc__extras
+                        .cart__quantity.js--components-function--increment-decrement-input-number
+                          input(type="text" value=`${products.id}` readonly style="display:none" class="incDecCart")
+                          input(type="number" value=`${products.price}` readonly style="display:none" class="priceCart")
+                          button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
+                            | -
+                          input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' value=`${products.quantity}` class="productQuantity")
+                          button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
+                            | +
+                  if !products.inCart
+                    button.addToCartBtn.btn.btn--round.btn--blue.btn--load.btn--margin
+                      span.btn--load__content Add to Cart
+                      span.btn--load__load-content
+                        i.fa.fa-circle-o-notch.fa-spin
+                        | &nbsp;Loading
+                  else 
+                    button.addToCartBtn.btn.btn--round.btn--blue.btn--load.btn--margin
+                      span.btn--load__content Modify in Cart
+                      span.btn--load__load-content
+                        i.fa.fa-circle-o-notch.fa-spin
+                        | &nbsp;Loading
+
+      .cart__summary
+        h2.heading-tertiary.heading-tertiary--2 Summary
+        table.cart__summary-table
+          tbody
+            tr.cart__summary-table-row
+              th.cart__summary-table-head Subtotal
+              td.cart__summary-table-data ₹ 
+                span.totalAmount #{total}
+            tr.cart__summary-table-row
+              th.cart__summary-table-head Delivery charges
+              td.cart__summary-table-data ₹0
+            tr.cart__summary-table-row.cart__summary-table-row--net
+              th.cart__summary-table-head Total
+              td.cart__summary-table-data ₹ 
+                span.totalAmount #{total}
+        button(type="button" id="addWholeBag").btn.btn--new-blue.btn--round.btn--full Add All
+
+
+
+
+  footer.footer.reset-anchor
+    .footer__container
+      .footer__main-container
+        .footer__box.footer__box--first
+          .footer__logo.typography-logo-style
+            i.fas.fa-camera-retro
+            |  Chemistry Gods
+          address.footer__contact
+            a.footer__contact-each(href='#')
+              span.footer__contact-icon
+                i.fas.fa-envelope
+              |                 chemistrygods@gmail.com
+        .footer__box
+          h3.footer__heading Information
+          ul.footer__list
+            li.footer__item
+              a(href='#') About Us
+            li.footer__item
+              a(href='#') Delivery Information
+            li.footer__item
+              a(href='#') Privacy Policy
+            li.footer__item
+              a(href='#') Contact Us
+        .footer__box
+          h3.footer__heading Support
+          ul.footer__list
+            li.footer__item
+              a(href='#') 24/7 Support
+            li.footer__item
+              a(href='#') FAQs
+            li.footer__item
+              a(href='#') Privacy Policy
+        .footer__box
+          h3.footer__heading Important Links
+          ul.footer__list
+            li.footer__item
+              a(href='#') Blog
+            li.footer__item
+              a(href='#') Testiomonials
+            li.footer__item
+              a(href='#') Feedback
+      .footer__copyright-container
+        .footer__copyright
+          | Copyright &copy; 2021 Chemistry Gods | All Rights Reserved
+  script(src='./index.js')

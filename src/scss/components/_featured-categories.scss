@@ -1,0 +1,52 @@
+/* ----------------------------------
+Featured Categories
+----------------------------------*/
+
+.featured-categories {
+  @include widthMain;
+  margin-top: 8rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 2rem;
+
+  &__box {
+    border-radius: 0.5rem;
+    padding: 1rem 3rem;
+
+    max-height: 20rem;
+
+    // box-shadow: var(--shadow-primary);
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+
+    &:nth-child(odd) {
+      background-color: var(--color-featured-categories-1);
+    }
+
+    &:nth-child(even) {
+      background-color: var(--color-featured-categories-2);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-height: 18rem;
+    object-fit: contain;
+  }
+
+  &__content {
+    text-align: right;
+  }
+
+  &__type {
+    margin-top: -0.5rem;
+  }
+
+  &__btn {
+    margin-top: 0.5rem;
+  }
+}

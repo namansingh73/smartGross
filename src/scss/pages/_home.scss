@@ -1,0 +1,78 @@
+/* ----------------------------------
+Home
+----------------------------------*/
+
+/* ----- Home top container ----- */
+.home-top-container {
+  background: var(--gradient-primary);
+  min-height: 100vh;
+}
+
+/* ----- Home intro box ----- */
+.home-intro-box {
+  width: 100%;
+  min-height: calc(100vh - var(--height-nav));
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  &__container {
+    // overflow: hidden;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: 1s ease-in-out all;
+  }
+
+  &__each {
+    flex: 0 0 100%;
+  }
+
+  &__each-inner {
+    @include widthMain;
+
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+
+    align-items: center;
+    text-align: center;
+  }
+
+  &__left {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+  }
+
+  &__img {
+    margin-left: 10%;
+    display: inline-block;
+    width: 70%;
+  }
+
+  &__sliders-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-size: 5rem;
+    position: absolute;
+    cursor: pointer;
+
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    &--left {
+      left: 1.5rem;
+    }
+
+    &--right {
+      right: 1.5rem;
+    }
+  }
+}

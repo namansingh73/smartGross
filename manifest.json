@@ -1,0 +1,16 @@
+{
+    "name": "Smart Bag",
+    "short_name": "SmartGross",
+    "theme_color": "white",
+    "background_color": "white",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "description": "Web app for buying groceries",
+    "icons": [
+        {
+            "src": "/public/img/gross.jpg",
+            "sizes": "240x240"
+        }
+    ]
+}

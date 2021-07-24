@@ -1,0 +1,9 @@
+.inner-card {
+  padding: 2.4rem 0;
+
+  &:first-child {
+    padding-top: 0.5rem;
+  }
+
+  border-bottom: 1px solid var(--color-grey-light-4);
+}

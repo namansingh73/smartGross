@@ -1,0 +1,136 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Smart Gross
+  script(src='https://kit.fontawesome.com/208182354f.js' crossorigin='anonymous')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap' rel='stylesheet')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='./index.css')
+  
+body.body.scrollbar
+  .navbar
+    nav.navbar__inner.reset-anchor
+      .navbar__hamburger.js--components-function--sidebar__hamburger
+      a(href='/')
+        .navbar__logo.typography-logo-style
+          i.fas.fa-camera-retro
+          |  Groceries
+      ul.navbar__list
+        li.navbar__list
+          a.navbar__link(href='/')
+            i.fas.fa-shopping-bag
+        li.navbar__list
+          a.navbar__link(href='/cart')
+            i.fas.fa-shopping-basket
+
+  section.products
+      h2.heading-secondary Smart Bag
+      .products__content
+        for products in smartBagData 
+          .reset-anchor.products__box
+            .products__img-outer: a(href='./each-product.html')
+              img.products__img(src=`${products.image}` alt='')
+            form(action="").product-desc
+              .product-desc__brand #{products.brand}
+              .product-desc__name.products__name #{products.name}
+              .product-desc__price
+                span.product-desc__price-act &#x20B9;#{products.price}
+              .cart__quantity.js--components-function--increment-decrement-input-number
+                input(type="text" value=`${products.id}` readonly style="display:none" class="inputClass")
+                button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
+                  | -
+                input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' max='100' value=`${products.quantity}`)
+                button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
+                  | +
+              if !products.inCart
+                button.addToCartBtn.btn.btn--round.btn--blue.btn--load
+                  span.btn--load__content Add to Cart
+                  span.btn--load__load-content
+                    i.fa.fa-circle-o-notch.fa-spin
+                    | &nbsp;Loading
+              else 
+                button.addToCartBtn.btn.btn--round.btn--blue.btn--load
+                  span.btn--load__content Modify in Cart
+                  span.btn--load__load-content
+                    i.fa.fa-circle-o-notch.fa-spin
+                    | &nbsp;Loading
+
+      h2.heading-secondary.margin--gap All products
+      .products__content
+        for products in data 
+          .reset-anchor.products__box
+            .products__img-outer: a(href='./each-product.html')
+              img.products__img(src=`${products.image}` alt='')
+            form(action="").product-desc
+              .product-desc__brand #{products.brand}
+              .product-desc__name.products__name #{products.name}
+              .product-desc__price
+                span.product-desc__price-act &#x20B9;#{products.price}
+              .cart__quantity.js--components-function--increment-decrement-input-number
+                input(type="text" value=`${products.id}` readonly style="display:none" class="inputClass")
+                button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
+                  | -
+                input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' max='100' value=`${products.quantity}`)
+                button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
+                  | +
+              if !products.inCart
+                button.addToCartBtn.btn.btn--round.btn--blue.btn--load
+                  span.btn--load__content Add to Cart
+                  span.btn--load__load-content
+                    i.fa.fa-circle-o-notch.fa-spin
+                    | &nbsp;Loading
+              else 
+                button.addToCartBtn.btn.btn--round.btn--blue.btn--load
+                  span.btn--load__content Modify in Cart
+                  span.btn--load__load-content
+                    i.fa.fa-circle-o-notch.fa-spin
+                    | &nbsp;Loading
+
+  footer.footer.reset-anchor
+    .footer__container
+      .footer__main-container
+        .footer__box.footer__box--first
+          .footer__logo.typography-logo-style
+            i.fas.fa-camera-retro
+            |  Chemistry Gods
+          address.footer__contact
+            a.footer__contact-each(href='#')
+              span.footer__contact-icon
+                i.fas.fa-envelope
+              |                 chemistrygods@gmail.com
+        .footer__box
+          h3.footer__heading Information
+          ul.footer__list
+            li.footer__item
+              a(href='#') About Us
+            li.footer__item
+              a(href='#') Delivery Information
+            li.footer__item
+              a(href='#') Privacy Policy
+            li.footer__item
+              a(href='#') Contact Us
+        .footer__box
+          h3.footer__heading Support
+          ul.footer__list
+            li.footer__item
+              a(href='#') 24/7 Support
+            li.footer__item
+              a(href='#') FAQs
+            li.footer__item
+              a(href='#') Privacy Policy
+        .footer__box
+          h3.footer__heading Important Links
+          ul.footer__list
+            li.footer__item
+              a(href='#') Blog
+            li.footer__item
+              a(href='#') Testiomonials
+            li.footer__item
+              a(href='#') Feedback
+      .footer__copyright-container
+        .footer__copyright
+          | Copyright &copy; 2021 Chemistry Gods | All Rights Reserved
+  script(src='./index.js')

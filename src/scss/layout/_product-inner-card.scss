@@ -1,0 +1,24 @@
+.product-inner-card {
+  // background: lightgreen;
+
+  display: grid;
+
+  grid-template-columns: 15rem 1fr;
+  gap: 3rem;
+
+  &__img-box {
+    // background: orangered;
+    height: 15rem;
+    // object-fit: cover;
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__main {
+    // background: lightblue;
+  }
+}

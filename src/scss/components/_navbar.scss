@@ -1,0 +1,214 @@
+/* ----------------------------------
+Navbar
+----------------------------------*/
+.navbar__link{
+  margin-left: 4rem;
+}
+.navbar {
+  border-bottom: 1px solid var(--color-grey-light-3);
+  background: var(--color-primary);
+
+  &__inner {
+    @include widthMain;
+
+    height: var(--height-nav);
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: var(--font-family-secondary);
+    // padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__hamburger {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: inherit;
+    width: var(--height-nav);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  &__hamburger-circle {
+    background: var(--color-white);
+    width: 5.5rem;
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px var(--color-grey-light-4);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  &__hamburger-circle:hover &__hamburger-line::before {
+    top: -8px;
+  }
+
+  &__hamburger-circle:hover &__hamburger-line::after {
+    bottom: -8px;
+  }
+
+  &__hamburger-line {
+    width: 50%;
+    height: 2px;
+    background-color: currentColor;
+    position: relative;
+    font-size: 0;
+
+    &::before,
+    &::after {
+      font-size: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: inherit;
+      position: absolute;
+      left: 0;
+    }
+
+    &::before {
+      top: -7px;
+      transition: all 0.1s;
+    }
+
+    &::after {
+      bottom: -7px;
+      transition: all 0.1s;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+  }
+
+  &__item {
+    position: relative;
+
+    &:not(:first-child) {
+      padding-left: 1.5rem;
+    }
+
+    &:not(:last-child) {
+      padding-right: 1.5rem;
+    }
+  }
+
+  &__search-form {
+    // background-color: red;
+    display: flex;
+    align-items: stretch;
+    // justify-content: stretch;
+  }
+
+  &__search-input {
+    align-self: stretch;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 1.6rem;
+    // letter-spacing: 0.1px;
+    line-height: inherit;
+    display: inline-block;
+    border-radius: 20rem;
+    border: none;
+    outline: none;
+    // margin-right: -5rem;
+    box-sizing: content-box;
+    padding: 0;
+    width: 0rem;
+    opacity: 0;
+    border: 1px solid transparent;
+    transition: margin-right 0s ease 0.3s, border-color 0.5s ease-out,
+      opacity 0.2s ease-out 0.2s, width 0.5s ease-out;
+
+    color: transparent;
+    &::placeholder {
+      color: transparent;
+      opacity: 1;
+    }
+
+    &--expanded {
+      margin-right: -5rem;
+      opacity: 1;
+      padding: 0.5rem 6rem 0.5rem 2rem;
+      width: 25ch;
+      transition: opacity 0.2s ease, width 0.5s ease-out;
+      border-color: var(--color-grey-light-4);
+
+      color: var(--color-grey-dark-1);
+      &::placeholder {
+        color: var(--color-grey-dark-4);
+      }
+    }
+  }
+
+  &__search-label {
+    cursor: pointer;
+    z-index: 2;
+  }
+}
+
+.user-dropdown-navbar {
+  &:hover &__box {
+    display: block;
+  }
+
+  &__box {
+    display: none;
+    position: absolute;
+    z-index: 50;
+
+    top: 100%;
+    right: 1.5rem;
+    font-size: 1.4rem;
+    font-family: var(--font-family);
+    width: 22rem;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    padding-top: 1rem;
+
+    &::after {
+      content: '';
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      top: -1rem;
+      right: 0;
+      border-left: 1rem solid transparent;
+      border-right: 1rem solid transparent;
+      border-bottom: 1rem solid var(--color-white);
+      filter: drop-shadow(0.5rem 0 1px rgba(205, 205, 205, 0.3));
+    }
+  }
+
+  &__list {
+    list-style: none;
+    box-shadow: 0 1rem 2rem 0 rgba(205, 205, 205, 0.4);
+    background-color: var(--color-white);
+    border-radius: 3px;
+  }
+
+  &__link {
+    display: block;
+    padding: 1.6rem 2rem;
+    border-bottom: 1px solid var(--color-grey-light-3);
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--color-grey-light-2);
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    padding-right: 1.2rem;
+    color: var(--color-new-blue-light);
+  }
+}

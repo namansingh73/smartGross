@@ -1,0 +1,170 @@
+.btn-reset {
+  @include resetBtn;
+}
+
+.btn {
+  /* Reset basic properties */
+  // display: inline-block;
+  // border: none;
+  // text-decoration: none;
+  // cursor: pointer;
+  // outline: none;
+  // font-size: inherit;
+  // font-family: inherit;
+  // text-align: center;
+  // line-height: inherit;
+  // font-weight: 300;
+  // margin-left: 10%;
+  @include resetBtn;
+
+  /* basic padding and margins */
+  padding: 0.8rem 1.8rem;
+  border-radius: 3px;
+
+  /* Color */
+  background: var(--current-color);
+  color: var(--color-grey-light-1);
+
+  /* To get customized color bottons */
+  @include currentColorOptions;
+
+  /* ----- diffrent categories of buttons ----- */
+
+  /* 1. Only icon */
+  &--only-icon {
+    font-size: 1rem;
+    padding: 1rem 1.4rem;
+  }
+
+  &:hover,
+  &:active {
+    background-color: var(--current-color-darker);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(#000, 0.2);
+  }
+
+  &--load {
+    &__load-content {
+      display: none;
+    }
+
+    &:disabled &__content {
+      display: none;
+    }
+
+    &:disabled &__load-content {
+      display: inline-block;
+    }
+  }
+
+  &:disabled {
+    cursor: no-drop;
+    background-color: var(--current-color-lighter);
+  }
+
+  /* 2. Text button like anchor tag */
+  &--text {
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    background-color: transparent;
+    color: var(--current-color);
+    display: inline;
+
+    &:hover,
+    &:active {
+      color: var(--current-color-dark);
+      background-color: transparent;
+      transform: translateY(0);
+      box-shadow: none;
+      text-decoration: underline;
+    }
+
+    &:disabled {
+      color: var(--current-color-lighter);
+      background: transparent;
+      text-decoration: none;
+    }
+  }
+
+  &--text-inital-dark {
+    color: var(--color-font);
+
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+  }
+
+  /* 3. Rounded corner */
+  &--round {
+    border-radius: 50rem;
+    padding: 0.5rem 1.8rem;
+  }
+
+  /* 4. Big Button */
+  &--big {
+    padding: 1.5rem 3.5rem;
+  }
+
+  /*5. Full width */
+  &--full {
+    width: 100%;
+    padding: 0.8em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  /*5. Border color */
+  &--border-color {
+    background: var(--color-white);
+    color: var(--current-color);
+    border: 1px solid var(--current-color);
+
+    &:hover {
+      color: var(--color-white);
+    }
+  }
+
+  /* ----- Dark text ----- */
+  &--dark-text {
+    color: var(--color-grey-dark-1);
+    font-weight: 400;
+
+    &:hover,
+    &:active {
+      color: var(--color-grey-light-1);
+      font-weight: 300;
+    }
+  }
+
+  /* -----  Special color buttons ----- */
+  &--dark {
+    --current-color: var(--color-dark-btn);
+    --current-color-darker: var(--color-dark-btn-dark);
+  }
+
+  &--main-color {
+    --current-color-lighter: var(--color-main-btn-light);
+    --current-color-light: var(--color-main-btn-light);
+    --current-color: var(--color-main-btn);
+    --current-color-dark: var(--color-main-btn-dark);
+    --current-color-darker: var(--color-main-btn-dark);
+  }
+
+  &--round-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.6em;
+    height: 1.6em;
+    font-size: 0.625em;
+    border-radius: 50%;
+  }
+}
+.btn--margin{
+  margin-top:2rem;
+}

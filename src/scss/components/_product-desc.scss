@@ -1,0 +1,64 @@
+.product-desc {
+  &__brand {
+    font-size: 1.4rem;
+    color: var(--color-grey-dark-2);
+    margin-bottom: -0.5rem;
+  }
+
+  font-weight: 400;
+
+  &__ratings {
+    margin: 0.3rem 0;
+    font-size: 1.4rem;
+  }
+
+  &__ratings-star {
+    color: var(--color-yellow);
+    font-size: 0.95em;
+    margin-right: 0.3rem;
+  }
+
+  &__name {
+    font-size: 1.75rem;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__price {
+    & > * {
+      display: inline-block;
+    }
+  }
+
+  &__price-act {
+    @include currentColorOptions;
+
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--current-color);
+  }
+
+  &__price-strike {
+    font-size: 1.4rem;
+    color: var(--color-grey-dark-2);
+    text-decoration: line-through;
+  }
+
+  &__price-off {
+    margin-left: 2px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-grey-dark-2);
+  }
+
+  &__extras {
+    margin-top: 1rem;
+  }
+
+  @media screen and (max-width: 455px) {
+    width: 60%;
+    margin: auto;
+  }
+}

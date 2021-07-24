@@ -1,0 +1,119 @@
+// This loop will have to have generic color components, they can be easily iterated
+$colors: 'purple', 'green', 'blue', 'yellow', 'red', 'pink', 'orange', 'primary',
+  'secondary', 'new-blue';
+
+:root {
+  /* ------ Fonts ------ */
+  --font-family: 'Poppins', sans-serif;
+  --font-family-secondary: 'Playfair Display', serif;
+
+  /* ----- Colors ------ */
+  // Remember to update the top list whlile adding colors here
+
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-purple-lighter: #a88de8;
+  --color-purple-light: #9370e3;
+  --color-purple: #8862e0;
+  --color-purple-dark: #7d54dd;
+  --color-purple-darker: #6837d8;
+
+  --color-green-lighter: #4beab2;
+  --color-green-light: #1de59f;
+  --color-green: #19d895;
+  --color-green-dark: #17c98b;
+  --color-green-darker: #129b6b;
+
+  --color-blue-lighter: #61b4f6;
+  --color-blue-light: #319ef4;
+  --color-blue: #2196f3;
+  --color-blue-dark: #118ef2;
+  --color-blue-darker: #0b73c5;
+
+  --color-yellow-lighter: #ffbf33;
+  --color-yellow-light: #ffb411;
+  --color-yellow: #ffaf00;
+  --color-yellow-dark: #eea300;
+  --color-yellow-darker: #cc8c00;
+
+  --color-red-lighter: #ff928b;
+  --color-red-light: #ff7269;
+  --color-red: #ff6258;
+  --color-red-dark: #ff5247;
+  --color-red-darker: #ff3225;
+
+  --color-pink-lighter: #ef5c8e;
+  --color-pink-light: #eb2d6e;
+  --color-pink: #e91e63;
+  --color-pink-dark: #e0165b;
+  --color-pink-darker: #b21148;
+
+  --color-orange-lighter: #ffbbb2;
+  --color-orange-light: #ff8e7f;
+  --color-orange: #ff523b;
+  --color-orange-dark: #f61d00;
+  --color-orange-darker: #c31700;
+
+  /* Get darker from 1 to 4 */
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-3_5: #dfdfdf;
+  --color-grey-light-4: #ccc;
+
+  /* Get lihter from 1 to 4 */
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+  --color-grey-dark-4: #aaa;
+
+  --color-new-blue-lighter: #8c6dff;
+  --color-new-blue-light: #643aff;
+  --color-new-blue: #3c07ff;
+  --color-new-blue-dark: #2d00d3;
+  --color-new-blue-darker: #2200a0;
+
+  /* Primary color */
+  --color-primary-lighter: var(--color-blue-lighter);
+  --color-primary-light: var(--color-blue-light);
+  --color-primary: var(--color-blue);
+  --color-primary-dark: var(--color-blue-dark);
+  --color-primary-darker: var(--color-blue-darker);
+
+  /* Secondary color */
+  --color-secondary-lighter: var(--color-green-lighter);
+  --color-secondary-light: var(--color-green-light);
+  --color-secondary: var(--color-green);
+  --color-secondary-dark: var(--color-green-dark);
+  --color-secondary-darker: var(--color-green-darker);
+
+  /* Customized properties */
+  --color-featured-categories-1: #dff9fb;
+  --color-featured-categories-2: #ffcccc;
+
+  --color-main-btn-light: #f6d85f;
+  --color-main-btn: #f1c40f;
+  --color-main-btn-dark: #c9b975;
+
+  --color-dark-btn: var(--color-grey-dark-1);
+  --color-dark-btn-dark: #ccae62;
+
+  /* Background color */
+  --color-background-dark: #0a1727;
+  --color-background: #fafafa;
+
+  /* Defining font color */
+  --color-font: var(--color-grey-dark-1);
+
+  /* Shadows */
+  --shadow-primary: 0 1rem 2rem 0 rgba(205, 205, 205, 0.3);
+  --shadow-secondary: 0 0 0 1px #00000026, 0 2px 3px rgb(0 0 0 / 20%);
+
+  /* Gradients */
+  --gradient-primary: radial-gradient(#fdfbfb, #ebedee);
+
+  /* Widths */
+  --height-nav: 8rem;
+  --width-main: 125rem;
+}

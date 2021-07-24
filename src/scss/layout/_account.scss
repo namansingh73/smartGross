@@ -1,0 +1,62 @@
+.account {
+  display: grid;
+
+  grid-template-columns: minmax(20rem, 22%) auto;
+  gap: 2%;
+
+  &__sidebar {
+    // background: lightblue;
+  }
+
+  &__sidebar-list {
+    list-style: none;
+    font-size: 1.5rem;
+  }
+
+  &__sidebar-item {
+    margin-bottom: 0.2rem;
+  }
+
+  // &__main {
+  //   // background: lightyellow;
+  // }
+
+  &__form {
+    margin-top: 1rem;
+  }
+
+  &__box-list {
+    list-style: none;
+    // font-size: 1.5rem;
+  }
+
+  &__box:not(:last-child) {
+    margin-bottom: 5rem;
+  }
+
+  &__box-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__path-list {
+    list-style: none;
+    display: flex;
+    font-size: 1.5rem;
+  }
+
+  &__path-item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__path-item:not(:last-child)::after {
+    content: '\226B';
+    display: block;
+    padding: 0 0.6rem;
+
+    font-weight: 600;
+
+    font-size: 0.8em;
+  }
+}

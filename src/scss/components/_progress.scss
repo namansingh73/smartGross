@@ -1,0 +1,102 @@
+// // http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/
+
+// progress,          /* All HTML5 progress enabled browsers */
+// progress[role]     /* polyfill */ {
+//   /* Turns off styling - not usually needed, but good to know. */
+//   appearance: none;
+//   -moz-appearance: none;
+//   -webkit-appearance: none;
+
+//   /* gets rid of default border in Firefox and Opera. */
+//   border: none;
+
+//   /* Needs to be in here for Safari polyfill so background images work as expected. */
+//   background-size: auto;
+
+//   /* Dimensions */
+//   width: 16rem;
+//   height: 0.8rem;
+// }
+
+// /* Polyfill */
+// progress[role]:after {
+//   background-image: none; /* removes default background from polyfill */
+// }
+
+// /* Ensure fallback text doesn't appear in polyfill */
+// progress[role] strong {
+//   display: none;
+// }
+
+// progress,                          /* Firefox  */
+// progress[role][aria-valuenow] {
+//   /* Polyfill */
+//   background: var(
+//     --color-grey-light-3
+//   ) !important; /* !important is needed by the polyfill */
+// }
+
+// /* Chrome */
+// progress::-webkit-progress-bar {
+//   background: var(--color-grey-light-3);
+// }
+
+// /* IE10 */
+// progress {
+//   --current-color: var(--color-primary);
+//   color: var(--current-color);
+//   border: 1px solid var(--color-grey-dark-4);
+//   border-radius: 0.4rem;
+// }
+
+// /* Firefox */
+// progress::-moz-progress-bar {
+//   --current-color: var(--color-primary);
+//   background: var(--current-color);
+// }
+
+// /* Chrome */
+// progress::-webkit-progress-value {
+//   --current-color: var(--color-primary);
+//   background: var(--current-color);
+//   // background: var(--color-red);
+// }
+
+// /* Polyfill */
+// progress[aria-valuenow]:before {
+//   --current-color: var(--color-primary);
+//   background: var(--current-color);
+// }
+
+// @each $color in $colors {
+//   progress.progress--#{$color},
+//   progress.progress--#{$color}::-moz-progress-bar,
+//   progress.progress--#{$color}::-webkit-progress-value,
+//   progress.progress--#{$color}[aria-valuenow]:before {
+//     --current-color: var(--color-#{$color});
+//   }
+// }
+
+// .progress--red {
+//   --current-color: var(--color-red);
+// }
+
+.progress {
+  background: var(--color-grey-light-3);
+  width: 16rem;
+  height: 0.8rem;
+  display: flex;
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--color-grey-dark-4);
+
+  &__bar {
+    @include currentColorOptions;
+
+    height: 0.6rem;
+    background: var(--current-color);
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+
+    width: calc(var(--percentage) * 1%);
+  }
+}

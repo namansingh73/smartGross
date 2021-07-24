@@ -1,0 +1,79 @@
+.footer {
+  margin-top: auto;
+  background: var(--gradient-primary);
+  padding-top: 2rem;
+
+  &__container {
+    @include widthMain;
+  }
+
+  &__main-container {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    column-gap: 5%;
+    padding: 2rem 0 1rem;
+  }
+
+  &__logo {
+    font-size: 2.4rem;
+  }
+
+  &__contact {
+    font-size: 0.9em;
+    margin-top: 1.5rem;
+  }
+
+  &__contact-icon {
+    display: inline-block;
+    width: 1.5rem;
+  }
+
+  a#{&}__contact-each {
+    display: block;
+  }
+
+  a:hover {
+    transition: all 0.2s;
+    transform: scale(1.02);
+    color: var(--color-blue-dark);
+  }
+
+  &__list {
+    list-style: none;
+    font-size: 0.9em;
+  }
+
+  &__copyright-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+  }
+
+  &__made-by-icon {
+    color: var(--color-red-dark);
+    display: inline-block;
+    transition: all 0.2s;
+    animation: heartbeat 2s infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

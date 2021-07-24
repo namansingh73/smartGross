@@ -1,0 +1,117 @@
+.form {
+  font-size: 1.4rem;
+  letter-spacing: 0.4px;
+
+  &__group {
+    margin-bottom: 1.5rem;
+
+    &--no-margin {
+      margin-bottom: 0;
+    }
+  }
+
+  &__btn-group {
+    margin-top: 3rem;
+  }
+
+  &__label {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 0.5rem;
+  }
+
+  &__star {
+    font-size: 1.2em;
+    color: var(--color-red-darker);
+    line-height: 1;
+    display: inline-block;
+    margin-right: 2px;
+  }
+
+  &__input[type='text'],
+  &__input[type='tel'],
+  &__input[type='email'],
+  &__input[type='password'],
+  &__select,
+  &__textarea {
+    width: 100%;
+    max-width: 60rem;
+    border: 1px solid var(--color-grey-light-4);
+    padding: 0.5rem 1rem;
+    outline: none;
+    border-radius: 0.3rem;
+    background: var(--color-white);
+
+    &:focus {
+      border-color: var(--color-grey-dark-3);
+
+      border-left: 4px solid var(--color-green);
+
+      &:invalid {
+        border-left: 4px solid var(--color-red);
+      }
+    }
+
+    &:disabled {
+      background: var(--color-grey-light-2);
+    }
+  }
+
+  &__textarea {
+    resize: none;
+  }
+
+  &__input--no-min[type='text'],
+  &__input--no-min[type='tel'],
+  &__input--no-min[type='email'],
+  &__input--no-min[type='password'],
+  &__select--no-min,
+  &__textarea--no-min {
+    max-width: initial;
+  }
+
+  &__text {
+    font-size: 0.82em;
+  }
+
+  // Rating
+  .form__rating {
+    @include currentColorOptions;
+
+    color: var(--current-color);
+  }
+
+  .form__rating_each-label {
+    position: relative;
+    cursor: pointer;
+
+    padding: 0 1px;
+
+    // background-color: red;
+    z-index: 5;
+  }
+
+  .form__rating_each-label__selected-star {
+    display: none;
+  }
+
+  .form__rating_each-label--selected {
+    .form__rating_each-label__unselected-star {
+      display: none;
+    }
+
+    .form__rating_each-label__selected-star {
+      display: inline-block;
+    }
+  }
+
+  .form__rating-each-radio {
+    width: 1px;
+    position: absolute;
+    z-index: -2;
+    bottom: 0;
+    left: 50%;
+
+    opacity: 0;
+  }
+}

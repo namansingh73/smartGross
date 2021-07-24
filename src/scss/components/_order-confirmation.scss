@@ -1,0 +1,33 @@
+.order-confirmation {
+  &__container {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.65);
+    min-height: 100vh;
+    width: 100vw;
+
+    z-index: 500;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  background-color: var(--color-white);
+  border-radius: 0.4rem;
+  width: 90%;
+  max-width: 65rem;
+  // height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0 5rem;
+
+  &__video {
+    width: 40%;
+  }
+
+  &__para {
+    margin: -1rem 0 3rem;
+  }
+}

@@ -1,0 +1,143 @@
+.menu-btn-collection {
+  background: var(--color-white);
+  border: 1px solid var(--color-grey-light-3);
+
+  display: inline-flex;
+
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-primary);
+
+  &__item {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    line-height: inherit;
+    text-decoration: none;
+    color: var(--color-font);
+    font-size: 1.35rem;
+    font-weight: 500;
+    font-weight: 400;
+    padding: 0.5rem 1.3rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    letter-spacing: 0.5px;
+
+    &:not(:last-child) {
+      border-right: 1.5px solid var(--color-grey-light-4);
+    }
+
+    &:first-child {
+      border-top-left-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+    }
+
+    &:last-child {
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+  }
+
+  &:not(:hover) &__item--active,
+  &__item:hover,
+  &__item:active {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  &__item--disabled:hover,
+  &__item--disabled:active {
+    cursor: no-drop;
+    // background-color: var(--color-red);
+  }
+}
+
+.menu-dropdown {
+  background: var(--color-white);
+  position: relative;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-grey-light-3);
+  box-shadow: var(--shadow-primary);
+
+  &__btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    line-height: inherit;
+    text-decoration: none;
+    color: var(--color-font);
+    font-size: 1.35rem;
+    font-weight: 500;
+    font-weight: 400;
+    padding: 0.5rem 1.3rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    letter-spacing: 0.5px;
+  }
+
+  &__list {
+    z-index: 10;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 20rem;
+
+    list-style: none;
+    border-radius: 0.5rem;
+
+    background-color: white;
+    border: 1px solid var(--color-grey-light-3);
+    padding: 0.8rem 1.5rem;
+
+    overflow: hidden;
+
+    &--show {
+      display: block;
+    }
+
+    &--no-min {
+      min-width: 0;
+    }
+  }
+
+  &__item {
+    padding: 0.35rem 0;
+  }
+
+  &__link {
+    display: inline-block;
+    line-height: inherit;
+    text-decoration: none;
+    color: var(--color-font);
+    font-size: 1.2rem;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+    font-weight: 400;
+    width: 100%;
+
+    &::before {
+      display: inline-block;
+      content: '';
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      box-shadow: 0px 0px 0px 2px var(--color-white) inset;
+    }
+
+    &--active::before {
+      background-color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}

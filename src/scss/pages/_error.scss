@@ -1,0 +1,21 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 13rem;
+    height: 13rem;
+
+    border: 1rem solid var(--color-red-lighter);
+    color: var(--color-red-lighter);
+
+    font-weight: 700;
+
+    font-size: 5rem;
+  }
+}

@@ -1,0 +1,147 @@
+.reviews {
+  &__product {
+    display: flex;
+  }
+
+  &__product-img {
+    height: 7rem;
+    margin-right: 6.5rem;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__net-ratings {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 2.5rem;
+    align-items: center;
+    justify-items: start;
+  }
+
+  &__net-ratings-average {
+    grid-column: span 2;
+
+    font-size: 2rem;
+    font-weight: 500;
+
+    border-radius: 0.2rem;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--color-blue);
+    color: var(--color-grey-light-1);
+  }
+
+  &__net-ratings-based-on {
+    color: var(--color-grey-dark-2);
+    font-weight: 500;
+  }
+
+  &__star {
+    color: var(--color-yellow);
+    padding: 0.8rem 0;
+    line-height: 1;
+    font-size: 1.6rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    letter-spacing: 0.6px;
+  }
+
+  &__verified {
+    color: var(--color-blue-darker);
+  }
+
+  &__by-on {
+    font-size: 1.3rem;
+    letter-spacing: 0.4px;
+    margin-top: -0.4rem;
+    color: var(--color-grey-dark-2);
+  }
+
+  &__by,
+  &__on {
+    font-weight: 600;
+  }
+
+  &__body {
+    font-size: 1.4rem;
+    letter-spacing: 0.4px;
+    margin: 1.3rem 0 1.7rem;
+  }
+
+  &__like-mark {
+    display: flex;
+    font-size: 1.4rem;
+    align-items: center;
+  }
+
+  &__like-count {
+    font-size: 1.4rem;
+  }
+
+  &__like-icon {
+    font-size: 1.8rem;
+    position: relative;
+    margin-right: 0.2rem;
+
+    display: inline-block;
+    // width: 2rem;
+
+    @include clearfix;
+  }
+
+  &__like-icon--not-liked {
+    transition: opacity ease 1s 0s;
+  }
+
+  &__like-icon--liked {
+    color: var(--color-blue);
+
+    opacity: 0;
+
+    position: absolute;
+    // display: none;
+    left: 0;
+    top: 0;
+
+    transition: opacity ease 1s, transform ease 1s;
+  }
+
+  &__like-btn {
+    @include resetBtn;
+    margin-right: auto;
+  }
+
+  // Like btn is liked
+
+  &__like-btn:hover &__like-icon--not-liked,
+  &__like-btn--liked &__like-icon--not-liked {
+    opacity: 0;
+    transition: opacity ease 0s;
+  }
+
+  &__like-btn:hover &__like-icon--liked,
+  &__like-btn--liked &__like-icon--liked {
+    opacity: 1;
+    // transform: scale(1.35);
+    transition: opacity ease 0s, transform ease 1s;
+  }
+
+  &__like-btn:hover &__like-icon--liked {
+    transform: scale(1.35);
+  }
+
+  &__mark {
+    @include resetBtn;
+    font-weight: 600;
+    color: var(--color-grey-dark-2);
+
+    &:hover {
+      color: var(--color-yellow-lighter);
+    }
+  }
+}

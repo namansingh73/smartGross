@@ -1,0 +1,36 @@
+.checkout-select-address-card {
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+
+  &__checbox-outer {
+    width: 4.5rem;
+  }
+
+  &__checbox-label {
+    // margin-right: 1.5rem;
+    margin-top: 0.2rem;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-red-light);
+    border-radius: 4px;
+
+    transition: all 0.1s, border-color 0.07s, border-width 0.07s;
+  }
+
+  &__checkbox:checked + &__checbox-label {
+    // background: purple;
+    width: 1rem;
+    transform: rotate(45deg);
+    // border-width: 3px;
+
+    border-radius: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+}

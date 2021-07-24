@@ -1,0 +1,42 @@
+/* ----------------------------------
+Utility class - usable classes
+----------------------------------*/
+.u-display-none {
+  display: none !important;
+}
+
+// .u-margin-left-small {
+//   margin-left: 1rem !important;
+// }
+
+@each $type,
+  $value
+    in (
+      'main': var(--margin-main),
+      'smaller': 0.5rem,
+      'small': 1rem,
+      'normal': 2rem,
+      'big': 3rem,
+      'bigger': 4rem
+    )
+{
+  .u-margin-#{$type} {
+    margin: #{$value} !important;
+  }
+
+  .u-margin-top-#{$type} {
+    margin-top: #{$value} !important;
+  }
+
+  .u-margin-right-#{$type} {
+    margin-right: #{$value} !important;
+  }
+
+  .u-margin-bottom-#{$type} {
+    margin-bottom: #{$value} !important;
+  }
+
+  .u-margin-left-#{$type} {
+    margin-left: #{$value} !important;
+  }
+}

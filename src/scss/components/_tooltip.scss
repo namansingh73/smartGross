@@ -1,0 +1,87 @@
+@mixin resetPositions {
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+}
+
+.tooltip {
+  position: relative;
+
+  &:hover &__element {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__element {
+    @include position-absolute-element(center, bottom, 1000);
+    top: calc(100% + 1rem);
+
+    color: #fff;
+    background-color: var(--color-grey-dark-1);
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    border-radius: 0.6rem;
+    line-height: 1.6;
+    font-family: var(--font-family);
+    letter-spacing: 0.5px;
+
+    opacity: 0;
+
+    display: grid;
+    visibility: hidden;
+    grid-template-columns: max-content;
+
+    transition: all 0.3s;
+
+    &::after {
+      @include position-absolute-element(center, top);
+      content: '';
+      border-width: 0.5rem;
+      border-style: solid;
+      position: absolute;
+      border-color: transparent transparent var(--color-grey-dark-1) transparent;
+    }
+
+    // bottom is the default
+
+    &--top {
+      @include resetPositions;
+      @include position-absolute-element(center, top);
+      bottom: calc(100% + 1rem);
+
+      &::after {
+        @include resetPositions;
+        @include position-absolute-element(center, bottom);
+        border-color: var(--color-grey-dark-1) transparent transparent
+          transparent;
+      }
+    }
+
+    &--right {
+      @include resetPositions;
+      @include position-absolute-element(right, middle);
+      left: calc(100% + 1rem);
+
+      &::after {
+        @include resetPositions;
+        @include position-absolute-element(left, middle);
+        border-color: transparent var(--color-grey-dark-1) transparent
+          transparent;
+      }
+    }
+
+    &--left {
+      @include resetPositions;
+      @include position-absolute-element(left, middle);
+      right: calc(100% + 1rem);
+
+      &::after {
+        @include resetPositions;
+        @include position-absolute-element(right, middle);
+        border-color: transparent transparent transparent
+          var(--color-grey-dark-1);
+      }
+    }
+  }
+}
