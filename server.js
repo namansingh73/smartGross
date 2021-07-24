@@ -166,7 +166,8 @@ app.post('/cartSaveChanges',cartSaveChanges);
 app.post('/addAllInCart',addAllFromSmart);
 app.post('/cartSmart',addSmart);
 
-app.listen(3000,()=>{
+const port = process.env.PORT || 3000;
+app.listen(port,()=>{
     //registerSW();
     console.log(`App running on port`);
 });
