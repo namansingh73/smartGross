@@ -2,7 +2,7 @@
 Navbar
 ----------------------------------*/
 .navbar__link{
-  margin-left: 4rem;
+  margin-left: 2.5rem;
 }
 .navbar {
   border-bottom: 1px solid var(--color-grey-light-3);
@@ -211,4 +211,9 @@ Navbar
     padding-right: 1.2rem;
     color: var(--color-new-blue-light);
   }
+}
+
+.aboutUs{
+  margin: auto;
+  min-width: 100%;
 }

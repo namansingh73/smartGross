@@ -51,7 +51,11 @@ const smartBag = (req,res,next)=>{
         total
     });
 };
-
+const about = (req,res,next)=>{
+    res.status(200).render('aboutUs',{
+        title:`about`,
+    });
+};
 
 
 
@@ -159,6 +163,7 @@ const addSmart = (req,res,next)=>{
 app.get('/',smartBag);
 app.get('/home',home);
 app.get('/cart',cart);
+app.get('/aboutUs',about);
 
 app.post('/cart',addCart);
 app.post('/clearCart',clearCart);

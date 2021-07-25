@@ -1,0 +1,90 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title SmartGross
+    script(src='https://kit.fontawesome.com/208182354f.js' crossorigin='anonymous')
+    // font-family: 'Permanent Marker', cursive;
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(href='https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap' rel='stylesheet')
+    //
+      font-family: 'Playfair Display', serif;
+      font-family: 'Poppins', sans-serif;
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='./index.css')
+    
+    link(rel="manifest" href="../manifest.json")
+
+  body.body.scrollbar
+    // navbar
+    .navbar
+      nav.navbar__inner.reset-anchor
+        .navbar__hamburger.js--components-function--sidebar__hamburger
+        a(href='/')
+          .navbar__logo.typography-logo-style
+            i.fas.fa-camera-retro
+            |  Groceries
+        ul.navbar__list
+          li.navbar__list
+            a.navbar__link(href='/')
+              i.fas.fa-shopping-bag 
+          li.navbar__item
+            a.navbar__link(href='/home')
+              i.fas.fa-home
+          li.navbar__list
+            a.navbar__link(href='/cart')
+              i.fas.fa-shopping-basket  
+          
+    .aboutUs 
+        p College Name - Netaji Subhas University of Technology 
+        p Team Name - Chemistry Gods 
+        p Team Members - Sahil Chawla, Shubh Gupta, Naman Singh
+
+
+  footer.footer.reset-anchor
+    .footer__container
+      .footer__main-container
+        .footer__box.footer__box--first
+          .footer__logo.typography-logo-style
+            i.fas.fa-camera-retro
+            |  Chemistry Gods
+          address.footer__contact
+            a.footer__contact-each(href='#')
+              span.footer__contact-icon
+                i.fas.fa-envelope
+              |                 chemistrygods@gmail.com
+        .footer__box
+          h3.footer__heading Information
+          ul.footer__list
+            li.footer__item
+              a(href='#') About Us
+            li.footer__item
+              a(href='#') Delivery Information
+            li.footer__item
+              a(href='#') Privacy Policy
+            li.footer__item
+              a(href='#') Contact Us
+        .footer__box
+          h3.footer__heading Support
+          ul.footer__list
+            li.footer__item
+              a(href='#') 24/7 Support
+            li.footer__item
+              a(href='#') FAQs
+            li.footer__item
+              a(href='#') Privacy Policy
+        .footer__box
+          h3.footer__heading Important Links
+          ul.footer__list
+            li.footer__item
+              a(href='#') Blog
+            li.footer__item
+              a(href='#') Testiomonials
+            li.footer__item
+              a(href='#') Feedback
+      .footer__copyright-container
+        .footer__copyright
+          | Copyright &copy; 2021 Chemistry Gods | All Rights Reserved
+  script(src='./index.js')
