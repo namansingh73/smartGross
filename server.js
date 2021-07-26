@@ -173,6 +173,5 @@ app.post('/cartSmart',addSmart);
 
 const port = process.env.PORT || 3000;
 app.listen(port,()=>{
-    //registerSW();
     console.log(`App running on port`);
 });

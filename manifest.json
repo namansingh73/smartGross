@@ -9,7 +9,7 @@
     "description": "Web app for buying groceries",
     "icons": [
         {
-            "src": "/public/img/gross.jpg",
+            "src": "/public/img/gross.png",
             "sizes": "240x240"
         }
     ]
