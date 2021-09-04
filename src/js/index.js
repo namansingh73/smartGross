@@ -8,6 +8,8 @@ import './component-functions/sliders';
 import './component-functions/increment-decrement-input-number';
 import './ajax/login';
 import './ajax/signup-complete';
+import './ajax/forgotpassword';
+import './ajax/resetPassword';
 import './pages/each-product';
 import './pages/addingInCart';
 import './pages/cartPage';

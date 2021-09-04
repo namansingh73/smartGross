@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken');
 const User = require('./../models/userModel');
 const {promisify} = require('util');
+const Email = require('../utils/email');
 //const sendMail = require('./../public/js/email');
 const crypto = require('crypto');
+const getBaseUrl = require('../utils/getBaseUrl');
 const { clearScreenDown } = require('readline');
 
 const signToken =id=>{
@@ -39,6 +41,7 @@ exports.signUp = async(req,res,next)=>{
             password:req.body.password,
             passwordConfirm:req.body.passwordConfirm
         });
+        await new Email({email:req.body.email,name:req.body.name},getBaseUrl(req)).sendWelcome();
         createSendToken(user,201,res);
     }catch(err){
         res.status(400).json({
@@ -185,7 +188,7 @@ exports.forgotPassword = async(req,res,next)=>{
     {
         res.status(400).json({
             status:'fail',
-            message:'User not found'
+            message:'User not found!'
         });
         return next();
     }
@@ -193,12 +196,8 @@ exports.forgotPassword = async(req,res,next)=>{
     await user.save({validateBeforeSave:false});
 
     try{
-        const resetURL = `${req.protocol}://${req.get('host')}/resetpassword/${resetToken}`;
-        // await sendMail({
-        //     email:`${req.body.email}`,
-        //     subject:'Password reset mail',
-        //     message:`Please change your password at ${resetURL}`
-        // })
+        const resetURL = `/resetpassword/${resetToken}`;
+        await new Email({email:user.email,name:user.name},getBaseUrl(req)).sendPasswordResetToken({relativeUrl:resetURL,time:"10 minutes"});
         res.status(200).json({
           status:'success',
           message:'Token sent to email'
@@ -208,7 +207,7 @@ exports.forgotPassword = async(req,res,next)=>{
         user.passwordResetToken = undefined;
         user.passwordResetExpires = undefined;
         await user.save({validateBeforeSave:false});
-      
+        console.log(err);
         res.status(500).json({
             status:'fail',
             message:'There was error sending email'
@@ -218,39 +217,28 @@ exports.forgotPassword = async(req,res,next)=>{
 };
 
 exports.resetPassword = async(req,res,next)=>{
-        //1)Get User Based on token
-        const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
-        const user = await User.findOne({passwordResetToken:hashedToken,passwordResetExpires:{$gt:
-        Date.now()}});
-        //2) If token has not expired, set the password for the user
-          if(!user)
-          {
-            res.status(500).json({
-                status:'fail',
-                message:'Token expired or unavialable'
-            });
-            return next();
-          }
-          user.password = req.body.password;
-          user.passwordConfirm = req.body.passwordConfirm;
-          user.passwordResetToken = undefined;
-          user.passwordResetExpires = undefined;
-          await user.save();
-      
-        //3)Update changedPasswordAt for the user
-        //4)Log the user in, send jwt
-        createSendToken(user,200,res);
+    //1)Get User Based on token
+    const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+    const user = await User.findOne({passwordResetToken:hashedToken,passwordResetExpires:{$gt:
+    Date.now()}});
+    //2) If token has not expired, set the password for the user
+        if(!user)
+        {
+        res.status(500).json({
+            status:'fail',
+            message:'Token expired or unavailable!'
+        });
+        return next();
+        }
+        user.password = req.body.password;
+        user.passwordConfirm = req.body.passwordConfirm;
+        user.passwordResetToken = undefined;
+        user.passwordResetExpires = undefined;
+        await user.save();
+    
+    //3)Update changedPasswordAt for the user
+    //4)Log the user in, send jwt
+    await new Email({email:user.email,name:user.name},getBaseUrl(req)).sendPasswordResetConfirmation();
+    createSendToken(user,200,res);
 };
       
-
-exports.changeProfilePhoto = async(req,res,next)=>{
-    await User.findByIdAndUpdate(req.user._id,{
-        profilePhoto:req.body.photo
-    },{
-        new:true
-    });
-    res.status(201).json({
-        status:'success'
-    });
-    next();
-};

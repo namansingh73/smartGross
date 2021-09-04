@@ -1,0 +1,37 @@
+tr: td(align='left' bgcolor='#ffffff' style='padding: 24px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;')
+
+  table(table border='0' cellpadding='0' cellspacing='0' width='100%')
+
+    //- Table Heading
+    tr
+      td(align='left' bgcolor=bodyBackgroundColor width='75%' style='padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;')
+        strong Order #
+
+      td(align='left' bgcolor=bodyBackgroundColor width='25%' style='padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;')
+        strong= order.id
+
+    //- Products
+    each product in order.products 
+      tr 
+        td(align='left' width='75%' style='padding: 6px 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;')
+          | #{product.name} (x#{product.quantity.now})
+        
+        td(align='left' width='25%' style='padding: 6px 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;')
+          | ₹#{Number(product.totalEach).toLocaleString('en-IN', {maximumFractionDigits: 2})}
+
+    //- Shippping
+    tr
+      td(align='left' width='75%' style='padding: 6px 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;')
+        | Shipping
+          
+      td(align='left' width='25%' style='padding: 6px 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;')
+        | ₹#{Number(order.deliveryCharge).toLocaleString('en-IN', {maximumFractionDigits: 2})}
+          
+    
+    //- Total
+    tr 
+      td(align='left' width='75%' style='padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #d2c7ba; border-bottom: 2px dashed #d2c7ba;')
+        strong Total 
+
+      td(align='left' width='25%' style='padding: 12px; font-family: "Source Sans Pro", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #d2c7ba; border-bottom: 2px dashed #d2c7ba;')
+        strong ₹#{Number(order.grandTotal).toLocaleString('en-IN', {maximumFractionDigits: 2})}

@@ -1,0 +1,40 @@
+mixin addressEachLine(value, comma=false)
+  if value 
+    span= `${value}${comma?',':''}`
+    <br>
+
+tr: td(align='center' bgcolor=bodyBackgroundColor valign='top' width='100%')
+
+  table(align='center' bgcolor='#ffffff' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px')
+    
+    tr: td( align='center' valign='top' style='font-size: 0; border-bottom: 3px solid #d4dadf')
+
+      // [if (gte mso 9)|(IE)]>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+        <tr>
+        <td align="left" valign="top" width="300">
+        <![endif]
+
+      div(style='display: inline-block; width: 100%; max-width: 100%; min-width: 240px; vertical-align: top;')
+
+        table(align='left' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 300px')
+
+          tr: td(align='left' valign='top' style='padding-bottom: 36px; padding-left: 36px; font-family: "Source Sans Pro", Helveti sans-serif; font-size: 16px; line-height: 24px;')
+
+            p: strong Delivery Address
+
+            p 
+              +addressEachLine(order.address.name)
+              +addressEachLine(order.address.address.flat, true)
+              +addressEachLine(order.address.address.area, true)
+              +addressEachLine(order.address.address.landmark, true)
+              +addressEachLine(order.address.address.district, true)
+              +addressEachLine(`${order.address.address.state} - ${order.address.address.pincode}`)
+
+
+      // [if (gte mso 9)|(IE)]>
+        </td>
+        <td align="left" valign="top" width="300">
+        <![endif]
+
+      

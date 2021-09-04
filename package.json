@@ -7,11 +7,13 @@
     "start": "node server.js",
     "start2": "parcel ./src/js/index.js --out-dir ./public --out-file index.js --open --no-autoinstall",
     "build": "parcel build ./src/js/index.js --out-dir ./public --out-file index.js --no-autoinstall --no-source-maps",
-    "test-build": "parcel build ./src/js/index.js --out-dir ./testing --out-file index.js --no-autoinstall --no-source-maps"
+    "test-build": "parcel build ./src/js/index.js --out-dir ./testing --out-file index.js --no-autoinstall --no-source-maps",
+    "prod": "cross-env NODE_ENV=production node server.js"
   },
   "author": "Naman Singh",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.5.1",
     "sass": "^1.32.5"
@@ -35,8 +37,10 @@
     "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "html-to-text": "^8.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.4",
+    "nodemailer": "^6.6.3",
     "pug": "^3.0.2",
     "validator": "^13.6.0"
   }

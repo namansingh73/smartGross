@@ -69,3 +69,16 @@ exports.signupPage = (req,res,next)=>{
         title:'signup'
     })
 };
+
+exports.forgotPassword = (req,res,next)=>{
+    res.status(200).render('authentication/forgot-password',{
+        title:'Forgot Password'
+    })
+};
+
+exports.resetPassword = (req,res,next)=>{
+    res.status(200).render('authentication/reset-password',{
+        title:'Reset Password',
+        token:req.params.token
+    })
+};

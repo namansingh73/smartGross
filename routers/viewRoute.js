@@ -13,8 +13,8 @@ router.get('/aboutUs',viewcontroller.about);
 // router.get('/login',viewcontroller.getLoginForm);
 // router.get('/signup',viewcontroller.signupform);
 // router.get('/mainpage',authController.isLoggedIn,viewcontroller.mainPage);
-// router.get('/forgotpassword',viewcontroller.forgotPass);
-// router.get('/resetpassword/:token',viewcontroller.resetPass);
+router.get('/forgotpassword',viewcontroller.forgotPassword);
+router.get('/resetpassword/:token',viewcontroller.resetPassword);
 // router.get('/profile',authController.isLoggedIn,viewcontroller.showProfile);
 // router.get('/profile/:userId',authController.isLoggedIn,postController.findOthersProfile,viewcontroller.showOthers);
 
