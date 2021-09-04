@@ -1,0 +1,28 @@
+extends base/_account
+
+include mixins/_account-box
+
+block accountContent
+  +accountBox('Profile details', [['/myAccount', 'Account'], ['#', 'Edit Account']])
+    form#update-me-form.form.account__form(action='#')
+      .form__group
+        label.form__label(for='name')
+          span.form__star *
+          | Name
+        input.form__input#name(type='text' name='name' placeholder='Your Name' minlength=3 value=user.name required)
+
+      .form__group
+        label.form__label(for='mobile')
+          span.form__star *
+          | Mobile
+        input.form__input#mobile(type='tel' name='mobile' placeholder='Your Mobile' pattern=String.raw`^(?:(?:\+|0{0,2})91(\s*[\- ]\s*)?|[0]?)?[789]\d{9}$` title='Please enter a valid indian number' value=user.mobile required)
+        
+      .form__btn-group
+        button#update-me-form-btn.btn.btn--round.btn--red.btn--load
+          span.btn--load__content
+            i.fas.fa-check
+            | &nbsp;Update Details
+          span.btn--load__load-content
+            i.fa.fa-circle-o-notch.fa-spin
+            | &nbsp;Loading
+          

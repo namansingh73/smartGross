@@ -1,0 +1,8 @@
+extends base/_base
+
+block content 
+  .card.error 
+    .error__icon &excl;
+    h2.light-text.u-margin-top-smaller= title || 'Something went wrong'
+    p.light-text.u-margin-bottom-small= message || "The page you are looking for doesn't exists"
+    a.btn.btn--red(href='/') Go to Homepage

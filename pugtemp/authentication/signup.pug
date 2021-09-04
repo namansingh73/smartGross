@@ -1,0 +1,32 @@
+extends base/_login-signup
+
+block loginSignupContent
+  h2.heading-quadinary.heading-quadinary--2 Signup
+  form.form#signup-form(action='#')
+    .form__group
+      label.form__label(for='email')
+        span.form__star *
+        | Email
+      input.form__input#email(type='email' name='email' placeholder='Your Email' pattern=String.raw`[a-zA-z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-z]{2,}$` title='Please enter a valid email' required)
+
+    .form__group
+      .form__text
+        | By continuing you agree to our&nbsp;
+        a.btn.btn--text(href='#') Terms of Condition
+        | &nbsp;and&nbsp;
+        a.btn.btn--text(href='#') Privacy Policy
+
+    .form__btn-group
+      button#signup-form-btn.btn.btn--full.btn--round.btn--red.btn--load
+        span.btn--load__content Signup
+        span.btn--load__load-content
+          i.fa.fa-circle-o-notch.fa-spin
+          | &nbsp;Loading
+
+  ul.login-signup__extra-list
+    li.login-signup__extra-list-item
+      | Forgot your password?&nbsp;
+      a.btn.btn--text(href='/forgotPassword') Reset Password
+    li.login-signup__extra-list-item
+      |  Already have an account?&nbsp;
+      a.btn.btn--text(href='/login') Login in

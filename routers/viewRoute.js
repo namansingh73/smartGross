@@ -3,7 +3,9 @@ const viewcontroller = require('../controller/viewcontroller');
 const authController = require('../controller/authController');
 const router = express.Router();
 
-router.get('/',viewcontroller.smartBag);
+router.get('/login',viewcontroller.loginPage);
+router.get('/signup',viewcontroller.signupPage);
+router.get('/',authController.isLoggedIn,viewcontroller.smartBag);
 router.get('/home',viewcontroller.home);
 router.get('/cart',viewcontroller.cart);
 router.get('/aboutUs',viewcontroller.about);

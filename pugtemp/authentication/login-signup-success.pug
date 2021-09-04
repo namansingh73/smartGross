@@ -1,0 +1,13 @@
+extends base/_login-signup
+
+block loginSignupContent
+  h2.heading-quadinary.heading-quadinary--2 Other Options
+
+
+  ul.login-signup__extra-list
+    li.login-signup__extra-list-item
+      | Already have an account?&nbsp;
+      a.btn.btn--text(href='/login') Login in
+    li.login-signup__extra-list-item
+      | Didn't have an account?&nbsp;
+      a.btn.btn--text(href='/signup') Signup

@@ -1,0 +1,28 @@
+extends _base
+
+mixin loginSignupList(links)
+  ul.login-signup__footer-list
+    each link in links
+      li.login_signup__footer-list-item: a.btn.btn--text(href=link[0])= link[1]
+
+block body
+  include ../components/_popup
+  .login-signup
+    .login-signup__outer-box
+      .login-signup__logo
+        a.reset-anchor.typography-logo-style(href='/')
+          i.fas.fa-camera-retro
+          | &nbsp;Benfr
+      - const full = true;
+      include ../components/_flash-message
+      //- section.flash-messages.flash-messages--full.js--components-function--flash-messages
+      .login-signup__box
+        block loginSignupContent
+
+    footer.login-signup__footer
+      +loginSignupList([
+        ['#', 'Terms of Condition'],
+        ['#', 'Privacy Policy'],
+        ['#', 'Support']
+      ])
+      .login-signup__footer-copyright Copyright &copy; 2021 Benfr | All Rights Reserved

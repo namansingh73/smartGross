@@ -57,3 +57,15 @@ exports.about = (req,res,next)=>{
         title:`about`,
     });
 };
+
+exports.loginPage = (req,res,next)=>{
+    res.status(200).render('authentication/login',{
+        title:'login'
+    })
+};
+
+exports.signupPage = (req,res,next)=>{
+    res.status(200).render('authentication/signup-complete',{
+        title:'signup'
+    })
+};

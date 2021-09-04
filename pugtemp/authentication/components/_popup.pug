@@ -1,0 +1,38 @@
+.popup__container.u-display-none.js--components-function--popup-confirm(data-none-class='u-display-none')
+  .popup
+    .popup__top-bar 
+      .popup__heading.js--components-function--popup-confirm__heading Confirm
+      button.btn.btn--text.btn--text-inital-dark.js--components-function--popup-confirm__close-btn-1 X 
+    .popup__body.js--components-function--popup-confirm__body
+      | Are you sure you want to perform this action?
+    .popup__btns 
+      button.btn.btn--text.btn--text-inital-dark.js--components-function--popup-confirm__close-btn-2 Cancel
+      button.btn.btn--red.btn--round.js--components-function--popup-confirm__confirm-btn Confirm
+
+
+.popup__container.u-display-none.js--components-function--popup-alert(data-none-class='u-display-none')
+  .popup
+    .popup__top-bar 
+      .popup__heading.js--components-function--popup-alert__heading Confirm
+      //- button.btn.btn--text.btn--text-inital-dark.js--components-function--popup-alert__close-btn-1 X 
+    .popup__body.js--components-function--popup-alert__body
+      | Are you sure you want to perform this action?
+    .popup__btns 
+      //- button.btn.btn--text.btn--text-inital-dark.js--components-function--popup-alert__close-btn-2 Cancel
+      button.btn.btn--red.btn--round.js--components-function--popup-alert__confirm-btn Ok
+
+
+.popup__container.u-display-none.js--components-function--popup-prompt(data-none-class='u-display-none')
+  form.popup.js--components-function--popup-prompt__form
+    .popup__top-bar 
+      .popup__heading.js--components-function--popup-prompt__heading Confirm
+      button.btn.btn--text.btn--text-inital-dark.js--components-function--popup-prompt__close-btn-1(type='button') X 
+    .popup__body
+      .form__group.form__group--no-margin
+        label.form__label(for='passwordConfirm')
+          span.form__star *
+          .js--components-function--popup-prompt__body Are you sure you want to perform this action?
+        textarea.form__textarea.js--components-function--popup-prompt__textarea(rows='2' required)
+    .popup__btns 
+      button(type='button').btn.btn--text.btn--text-inital-dark.js--components-function--popup-prompt__close-btn-2 Cancel
+      button.btn.btn--red.btn--round.js--components-function--popup-prompt__confirm-btn Ok

@@ -1,0 +1,17 @@
+extends base/_account
+
+include mixins/_account-box
+
+block accountContent
+  +accountBox('My Account', [['#', 'Account']])
+    +accountBoxList([
+      ['/updateMe', 'Edit your account information'],
+      ['/changeMyEmail', 'Edit login information'],
+      ['/updateMyPassword', 'Manage password'],
+      ['/addresses', 'Manage addresses']
+    ])
+  +accountBox('Manage')
+    +accountBoxList([
+      ['/orders', 'View order history'],
+      ['/wishlist', 'View wishlist']
+    ])

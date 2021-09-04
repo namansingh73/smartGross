@@ -1,0 +1,42 @@
+//- -
+//-   const flashMessages = [
+//-     {
+//-       type: 'success',
+//-       message: 'This is the success message'
+//-     },
+//-     {
+//-       type: 'warning',
+//-       message: 'This is the warning message'
+//-     },
+//-     {
+//-       type: 'error',
+//-       message: 'This is the error message'
+//-     }
+//-   ]
+
+section.flash-messages.js--components-function--flash-messages(class=full ? 'flash-messages--full': '')
+
+  each flashMessage in flashMessages || []
+    - 
+      let heading, color, icon;
+      if(flashMessage.type && flashMessage.type.toLowerCase() === 'success'){
+        heading = 'Success';
+        color = 'green';
+        icon = '&checkmark;';
+      }else if(flashMessage.type && flashMessage.type.toLowerCase() === 'error'){
+        heading = 'Error';
+        color = 'red';
+        icon = '&Cross;';
+      }else{
+        heading = 'Warning';
+        color = 'yellow';
+        icon = '&excl;';
+      }
+    
+    .flash-messages__message.js--components-function--flash-messages__message(class=`flash-messages__message--${color}`)
+      .flash-messages__icon!= icon
+      .flash-messages__content
+        h4.flash-messages__heading= heading
+        .flash-messages__body= flashMessage.message
+      button.flash-messages__close-btn.js--components-function--flash-close-btn  &Cross;
+    
