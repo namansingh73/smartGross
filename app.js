@@ -1,5 +1,6 @@
 const express = require('express');
 const viewRouter = require('./routers/viewRoute');
+const cartRouter = require('./routers/cartRoute');
 const path = require('path');
 const compression = require('compression');
 const app = express();
@@ -13,5 +14,6 @@ app.use(express.static(path.join(__dirname,'')));
 
 //view route
 app.use('/',viewRouter);
+app.use('/',cartRouter);
 
 module.exports = app;
