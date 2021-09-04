@@ -21,6 +21,7 @@ if(clearTheCart)
             data:{
             }
         });
+        //console.log(res);
         location.reload();
     });
 }

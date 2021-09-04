@@ -1,64 +1,12 @@
-const app = require('./app');
 const fs = require('fs');
 const path = require('path');
 
 const data = JSON.parse(fs.readFileSync(path.join(__dirname,'data.json')));
 const smartBagData = JSON.parse(fs.readFileSync(path.join(__dirname,'smartBagData.json')));
-//to render
-const home = (req,res,next)=>{
-    res.status(200).render('home',{
-        title:`Home`,
-        data,
-        smartBagData
-    });
-};
-const cart = (req,res,next)=>{
-    let tempPre = false;
-    let total= 0;
-    for(let i=0;i<data.length;i++)
-    {
-        if(data[i].inCart)
-        {
-            tempPre = true;
-            total += (data[i].quantity*data[i].price);
-        }
-    }
-    for(let i=0;i<smartBagData.length;i++)
-    {
-        if(smartBagData[i].inCart)
-        {
-            tempPre = true;
-            total += (smartBagData[i].quantity*smartBagData[i].price);
-        }
-    }
-    res.status(200).render('cart',{
-        title:`Cart`,
-        data,
-        smartBagData,
-        tempPre,
-        total
-    });
-};
-const smartBag = (req,res,next)=>{
-    let total = 0;
-    for(let i=0;i<smartBagData.length;i++)
-    {
-        total += (smartBagData[i].quantity*smartBagData[i].price);
-    }
-    res.status(200).render('index',{
-        title:`smartBag`,
-        smartBagData,
-        total
-    });
-};
-const about = (req,res,next)=>{
-    res.status(200).render('aboutUs',{
-        title:`about`,
-    });
-};
 
+global.customData = {data,smartBagData};
 
-
+const app = require('./app');
 // server requests
 const addCart = async (req,res,next)=>{
     const idVar = req.body.idVar;
@@ -159,11 +107,6 @@ const addSmart = (req,res,next)=>{
         }); 
     });
 };
-
-app.get('/',smartBag);
-app.get('/home',home);
-app.get('/cart',cart);
-app.get('/aboutUs',about);
 
 app.post('/cart',addCart);
 app.post('/clearCart',clearCart);

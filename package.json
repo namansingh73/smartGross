@@ -30,8 +30,11 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "pug": "^3.0.2"
+    "mongoose": "^6.0.4",
+    "pug": "^3.0.2",
+    "validator": "^13.6.0"
   }
 }
