@@ -38,7 +38,7 @@ body.body.scrollbar
         for products in smartBagData 
           .reset-anchor.products__box
             .products__img-outer: a(href='./each-product.html')
-              img.products__img(src='/img/placeholder.png' alt='')
+              img.products__img(src=`/img/${products.id}.jpg` alt='')
             form(action="").product-desc
               .product-desc__brand #{products.brand}
               .product-desc__name.products__name #{products.name}
