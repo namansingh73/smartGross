@@ -5,10 +5,10 @@ const router = express.Router();
 
 router.get('/login',viewcontroller.loginPage);
 router.get('/signup',viewcontroller.signupPage);
-router.get('/',authController.isLoggedIn,viewcontroller.smartBag);
-router.get('/home',viewcontroller.home);
-router.get('/cart',viewcontroller.cart);
-router.get('/aboutUs',viewcontroller.about);
+router.get('/',authController.isLoggedIn,viewcontroller.home);
+router.get('/home',authController.isLoggedIn,viewcontroller.smartBag);
+router.get('/cart',authController.isLoggedIn,viewcontroller.cart);
+router.get('/aboutUs',authController.isLoggedIn,viewcontroller.about);
 //router.get('/',authController.isLoggedIn,authController.reDirect);
 // router.get('/login',viewcontroller.getLoginForm);
 // router.get('/signup',viewcontroller.signupform);

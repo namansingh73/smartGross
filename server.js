@@ -21,20 +21,8 @@ mongoose.connect(DB,{
 }).then(()=>{
     console.log('DB connection successful');
 });
-
-const url = "http://127.0.0.1:5000/productRecommendation?userId=1"
 // const bagData = 
-app.use("/getData",async (req,res,next)=>{
-    const response = await axios({
-        method: 'GET',
-        url: url,
-      });
-      console.log(response.data)
-      res.status(200).json({
-        status:'success'
-    });
-    
-})
+//app.use("/getData");
 
 const port = process.env.PORT || 3000;
 app.listen(port,()=>{

@@ -38,12 +38,14 @@ exports.signUp = async(req,res,next)=>{
         const user = await User.create({
             name:req.body.name,
             email:req.body.email,
+            userId:await User.countDocuments()+1,
             password:req.body.password,
             passwordConfirm:req.body.passwordConfirm
         });
         await new Email({email:req.body.email,name:req.body.name},getBaseUrl(req)).sendWelcome();
         createSendToken(user,201,res);
     }catch(err){
+        console.log(err);
         res.status(400).json({
             status:'fail',
             message:'Signup failed! Try again later!'

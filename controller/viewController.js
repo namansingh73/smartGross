@@ -1,10 +1,19 @@
 const {data,smartBagData} = global.customData;
+const axios = require('axios');
 
-exports.home = (req,res,next)=>{
+exports.home = async (req,res,next)=>{
+    const url = `http://127.0.0.1:5000/productRecommendation?userId=${req.user.userId}`
+    const response = await axios({
+        method: 'GET',
+        url: url,
+    });
+    const smartData = response.data.map(([id,name,price,brand])=>{
+        return {id,name,price,brand,quantity:1};
+    });
     res.status(200).render('home',{
         title:`Home`,
         data,
-        smartBagData
+        smartBagData:smartData
     });
 };
 
