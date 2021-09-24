@@ -2,18 +2,28 @@ const {data,smartBagData} = global.customData;
 const axios = require('axios');
 
 exports.home = async (req,res,next)=>{
-    const url = `http://127.0.0.1:5000/productRecommendation?userId=${req.user.userId}`
-    const response = await axios({
+    const smartDataUrl = `http://127.0.0.1:5000/productRecommendation?userId=${req.user.userId}`
+    const smartBag = await axios({
         method: 'GET',
-        url: url,
+        url: smartDataUrl,
     });
-    const smartData = response.data.map(([id,name,price,brand])=>{
+    const allProdUrl = 'http://127.0.0.1:5000/getProductList';
+    const allProducts = await axios({
+        method: 'GET',
+        url:allProdUrl
+    });
+    //console.log(allProducts);
+    const smartData = smartBag.data.map(([id,name,price,brand])=>{
+        return {id,name,price,brand,quantity:1};
+    });
+    const allProductData = allProducts.data.map(([id,name,price,brand])=>{
         return {id,name,price,brand,quantity:1};
     });
     res.status(200).render('home',{
         title:`Home`,
         data,
-        smartBagData:smartData
+        smartBagData:smartData,
+        allData:allProductData
     });
 };
 

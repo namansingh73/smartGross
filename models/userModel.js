@@ -19,6 +19,27 @@ const userSchema = new mongoose.Schema({
         type:Number,
         required:[true]
     },
+    inCart:[
+        {
+            pid:{
+                unique:true,
+                type:String
+            },
+            name:{
+                type:String
+            },
+            brand:{
+                type:String
+            },
+            price:{
+                type:Number
+            },
+            quantity:{
+                type:Number,
+                default:1
+            }
+        }
+    ],
     password:{
         type:String,
         required:[true,'Password is mandatory'],
