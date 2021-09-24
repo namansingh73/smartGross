@@ -5,16 +5,22 @@ const addToCart = document.getElementsByClassName("product-desc");
 Array.from(addToCart).forEach(form=>{
     form.addEventListener("submit",async function(e){
         e.preventDefault();
-        const idVar = this.getElementsByClassName("inputClass")[0].value;
-        const quanVar = this.getElementsByClassName("cart__quantity-input")[0].value*1;
+        const pid = this.getElementsByClassName("inputId")[0].value;
+        const name = this.getElementsByClassName("inputName")[0].value;
+        const brand = this.getElementsByClassName("inputBrand")[0].value;
+        const price = this.getElementsByClassName("inputPrice")[0].value*1;
+        const quantity = this.getElementsByClassName("cart__quantity-input")[0].value*1;
         const btn = this.getElementsByClassName("addToCartBtn")[0];
         btn.setAttribute("disabled","disabled");
         const res = await axios({
             method:'POST',
             url:'/cart',
             data:{
-                idVar,
-                quanVar
+                pid,
+                name,
+                price,
+                brand,
+                quantity
             }
         });
         btn.getElementsByClassName("btn--load__content")[0].textContent = "Modify in Cart";

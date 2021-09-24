@@ -3,17 +3,22 @@ const fs = require('fs');
 const path = require('path');
 
 exports.addCart = async (req,res,next)=>{
-    // console.log("HI");
-    const idVar = req.body.idVar;
-    const quanVar = req.body.quanVar;
-    const product = data.find(d=>(d.id==idVar));
-    product.quantity = quanVar;
-    product.inCart = true;
-    await fs.writeFile((path.join(__dirname,'../data.json')),JSON.stringify(data),()=>{
-        res.status(201).json({
-            "message":"success"
-        }); 
+    const product = req.body;
+    const idx = req.user.inCart.findIndex((cartProduct)=>{
+        return cartProduct.pid === product.pid;
     });
+    if(idx!==-1)
+    {
+        req.user.inCart[idx].quantity = product.quantity;
+    }
+    else
+    {
+        req.user.inCart.push(product);
+    }
+    await req.user.save();
+    return res.status(201).json({
+        "message":"success"
+    }); 
 };
 
 exports.clearCart = async (req,res,next)=>{
@@ -91,15 +96,18 @@ exports.addAllFromSmart = async (req,res,next)=>{
 };
 
 exports.addSmart = async (req,res,next)=>{
-    console.log("HI");
-    const idVar = req.body.idVar;
-    const quanVar = req.body.quanVar;
-    const product = smartBagData.find(d=>(d.id==idVar));
-    product.quantity = quanVar;
-    product.inCart = true;
-    await fs.writeFile((path.join(__dirname,'../smartBagData.json')),JSON.stringify(smartBagData),()=>{
-        res.status(201).json({
-            "message":"success"
-        }); 
-    });
+    return res.status(201).json({
+        "message":"success"
+    }); 
+    // //console.log("addSmart function");
+    // const idVar = req.body.idVar;
+    // const quanVar = req.body.quanVar;
+    // const product = smartBagData.find(d=>(d.id==idVar));
+    // // product.quantity = quanVar;
+    // product.inCart = true;
+    // await fs.writeFile((path.join(__dirname,'../smartBagData.json')),JSON.stringify(smartBagData),()=>{
+    //     res.status(201).json({
+    //         "message":"success"
+    //     }); 
+    // });
 };

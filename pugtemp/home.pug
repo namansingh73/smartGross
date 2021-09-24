@@ -45,7 +45,10 @@ body.body.scrollbar
               .product-desc__price
                 span.product-desc__price-act &#x20B9;#{products.price}
               .cart__quantity.js--components-function--increment-decrement-input-number
-                input(type="text" value=`${products.id}` readonly style="display:none" class="inputClass")
+                input(type="text" value=`${products.id}` readonly style="display:none" class="inputId")
+                input(type="text" value=`${products.name}` readonly style="display:none" class="inputName")
+                input(type="text" value=`${products.brand}` readonly style="display:none" class="inputBrand")
+                input(type="text" value=`${products.price}` readonly style="display:none" class="inputPrice")
                 button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
                   | -
                 input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' max='100' value=`${products.quantity}`)
@@ -76,7 +79,10 @@ body.body.scrollbar
               .product-desc__price
                 span.product-desc__price-act &#x20B9;#{products.price}
               .cart__quantity.js--components-function--increment-decrement-input-number
-                input(type="text" value=`${products.id}` readonly style="display:none" class="inputClass")
+                input(type="text" value=`${products.id}` readonly style="display:none" class="inputId")
+                input(type="text" value=`${products.name}` readonly style="display:none" class="inputName")
+                input(type="text" value=`${products.brand}` readonly style="display:none" class="inputBrand")
+                input(type="text" value=`${products.price}` readonly style="display:none" class="inputPrice")
                 button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
                   | -
                 input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' max='100' value=`${products.quantity}`)

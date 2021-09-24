@@ -54,8 +54,8 @@ if(saveTheCart)
 
 
 
-const updateButton = document.getElementsByClassName("cart__quantity-btn");
-const updateAmount = document.getElementsByClassName("cart__quantity-input");
+const updateButton = document.getElementsByClassName("cart__quantity-btn2");
+const updateAmount = document.getElementsByClassName("cart__quantity-input2");
 const totalAmount = document.getElementsByClassName("totalAmount");
 const removeEle = document.getElementsByClassName("removeEle");
 

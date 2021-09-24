@@ -42,12 +42,12 @@ html(lang='en')
     .card.cart
       .cart__main
         h2.heading-tertiary.heading-tertiary--2 Smart Bag
-        for products in smartBagData
+        for products in previousHistory
           if true
             .inner-card.reset-anchor
               .product-inner-card
                 a.product-inner-card__img-box
-                  img.product-inner-card__img(src=`${products.image}` alt='')
+                  img.product-inner-card__img(src=`/img/${products.pid}.jpg` alt='')
                 form(action="").product-inner-card__main
                   .product-desc
                     .product-desc
@@ -85,14 +85,14 @@ html(lang='en')
             tr.cart__summary-table-row
               th.cart__summary-table-head Subtotal
               td.cart__summary-table-data ₹ 
-                span.totalAmount #{total}
+                span.totalAmount #{totalAmount}
             tr.cart__summary-table-row
               th.cart__summary-table-head Delivery charges
               td.cart__summary-table-data ₹0
             tr.cart__summary-table-row.cart__summary-table-row--net
               th.cart__summary-table-head Total
               td.cart__summary-table-data ₹ 
-                span.totalAmount #{total}
+                span.totalAmount #{totalAmount}
         button(type="button" id="addWholeBag").btn.btn--new-blue.btn--round.btn--full Add All
 
 

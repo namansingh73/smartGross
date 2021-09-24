@@ -48,13 +48,13 @@ const userSchema = new mongoose.Schema({
     },
     passwordConfirm:{
         type:String,
-        required:[true,'Password is mandatory'],
-        validate:{
-            validator:function(el){
-                return el === this.password;
-            },
-            message:'Passwords are not same'
-        }
+        // required:[true,'Password Confirm is mandatory'],
+        // validate:{
+        //     validator:function(el){
+        //         return el === this.password;
+        //     },
+        //     message:'Passwords are not same'
+        // }
     },
     passwordChangedAt :{
         type:Date
@@ -67,6 +67,10 @@ userSchema.pre('save',async function(next){
     if(!this.isModified('password'))
     {
         return next();
+    }
+    if(!this.passwordConfirm || this.password!==this.passwordConfirm)
+    {
+        throw new Error("Please enter same passwords");
     }
     //encrypting the password
     this.password = await bcrypt.hash(this.password,12);
