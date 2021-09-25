@@ -42,59 +42,32 @@ html(lang='en')
     .card.cart
       .cart__main
         h2.heading-tertiary.heading-tertiary--2 My Cart
-        for products in smartBagData
-          if products.inCart
-            .inner-card.reset-anchor
-              .product-inner-card
-                a.product-inner-card__img-box(href='./each-product.html')
-                  img.product-inner-card__img(src=`${products.image}` alt='')
-                .product-inner-card__main
+        for products in insideCart
+          .inner-card.reset-anchor
+            .product-inner-card
+              a.product-inner-card__img-box(href='./each-product.html')
+                img.product-inner-card__img(src=`/img/${products.pid}.jpg` alt='')
+              .product-inner-card__main
+                .product-desc
                   .product-desc
-                    .product-desc
-                      .product-desc__brand 
-                      a.product-desc__name.products__name(href='./each-product.html')
-                        | #{products.name} 
-                      .product-desc__price
-                        span.product-desc__price-act &#x20B9;#{products.price}
-                      .product-desc__extras
-                        .cart__quantity.js--components-function--increment-decrement-input-number
-                          input(type="text" value=`${products.id}` readonly style="display:none" class="incDecCart")
-                          input(type="number" value=`${products.price}` readonly style="display:none" class="priceCart")
-                          button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
-                            | -
-                          input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' value=`${products.quantity}`)
-                          button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
-                            | +
-                        .removeEle.btn.btn--text.btn--text-inital-dark.btn--primary
-                          | Remove
-        for products in data
-          if products.inCart
-            .inner-card.reset-anchor
-              .product-inner-card
-                a.product-inner-card__img-box(href='./each-product.html')
-                  img.product-inner-card__img(src=`${products.image}` alt='')
-                .product-inner-card__main
-                  .product-desc
-                    .product-desc
-                      .product-desc__brand 
-                      a.product-desc__name.products__name(href='./each-product.html')
-                        | #{products.name} 
-                      .product-desc__price
-                        span.product-desc__price-act &#x20B9;#{products.price}
-                      .product-desc__extras
-                        .cart__quantity.js--components-function--increment-decrement-input-number
-                          input(type="text" value=`${products.id}` readonly style="display:none" class="incDecCart")
-                          input(type="number" value=`${products.price}` readonly style="display:none" class="priceCart")
-                          button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
-                            | -
-                          input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' value=`${products.quantity}`)
-                          button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
-                            | +
-                        .removeEle.btn.btn--text.btn--text-inital-dark.btn--primary
-                          | Remove       
+                    .product-desc__brand 
+                    a.product-desc__name.products__name(href='./each-product.html')
+                      | #{products.name} 
+                    .product-desc__price
+                      span.product-desc__price-act &#x20B9;#{products.price}
+                    .product-desc__extras
+                      .cart__quantity.js--components-function--increment-decrement-input-number
+                        input(type="text" value=`${products.pid}` readonly style="display:none" class="incDecCart")
+                        input(type="number" value=`${products.price}` readonly style="display:none" class="priceCart")
+                        button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
+                          | -
+                        input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' value=`${products.quantity}`)
+                        button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
+                          | +
+                      .removeEle.btn.btn--text.btn--text-inital-dark.btn--primary
+                        | Remove    
 
-
-        if !tempPre
+        if insideCart.length == 0
           .inner-card.js--ajax--cart-each--none
             p.heading-pentaniary.light-text Cart is empty         
 
@@ -116,15 +89,15 @@ html(lang='en')
             tr.cart__summary-table-row
               th.cart__summary-table-head Subtotal
               td.cart__summary-table-data ₹ 
-                span.totalAmount #{total}
+                span.totalAmount #{totalAmount}
             tr.cart__summary-table-row
               th.cart__summary-table-head Delivery charges
               td.cart__summary-table-data ₹0
             tr.cart__summary-table-row.cart__summary-table-row--net
               th.cart__summary-table-head Total
               td.cart__summary-table-data ₹ 
-                span.totalAmount #{total}
-        if tempPre
+                span.totalAmount #{totalAmount}
+        if insideCart.length!=0
           button.btn.btn--new-blue.btn--round.btn--full Place Order
         else
           button(disabled).btn.btn--new-blue.btn--round.btn--full Place Order

@@ -22,22 +22,10 @@ exports.addCart = async (req,res,next)=>{
 };
 
 exports.clearCart = async (req,res,next)=>{
-    const product = data;
-    for(let x=0;x<product.length;x++)
-    {
-        product[x].inCart = false;
-    }
-    const prodSmart = smartBagData;
-    for(let x=0;x<prodSmart.length;x++)
-    {
-        prodSmart[x].inCart = false;
-    }
-    await fs.writeFile((path.join(__dirname,'../data.json')),JSON.stringify(data),()=>{
-        fs.writeFile((path.join(__dirname,'../smartBagData.json')),JSON.stringify(smartBagData),()=>{
-            res.status(201).json({
-                "message":"success"
-            });
-        });
+    req.user.inCart = [];
+    await req.user.save();
+    return res.status(201).json({
+        "message":"success"
     });
 };
 

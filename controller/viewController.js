@@ -1,4 +1,3 @@
-const {data,smartBagData} = global.customData;
 const axios = require('axios');
 
 exports.home = async (req,res,next)=>{
@@ -43,30 +42,16 @@ exports.home = async (req,res,next)=>{
 
 
 exports.cart = (req,res,next)=>{
-    let tempPre = false;
-    let total= 0;
-    for(let i=0;i<data.length;i++)
+    const insideCart = req.user.inCart;
+    let totalAmount = 0;
+    for(let i=0;i<insideCart.length;i++)
     {
-        if(data[i].inCart)
-        {
-            tempPre = true;
-            total += (data[i].quantity*data[i].price);
-        }
+        totalAmount += insideCart[i].price*insideCart[i].quantity;
     }
-    for(let i=0;i<smartBagData.length;i++)
-    {
-        if(smartBagData[i].inCart)
-        {
-            tempPre = true;
-            total += (smartBagData[i].quantity*smartBagData[i].price);
-        }
-    }
-    res.status(200).render('cart',{
+    return res.status(200).render('cart',{
         title:`Cart`,
-        data,
-        smartBagData,
-        tempPre,
-        total
+        insideCart,
+        totalAmount
     });
 };
 

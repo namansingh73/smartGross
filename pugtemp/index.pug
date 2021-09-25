@@ -41,30 +41,30 @@ html(lang='en')
 
     .card.cart
       .cart__main
-        h2.heading-tertiary.heading-tertiary--2 Smart Bag
+        h2.heading-tertiary.heading-tertiary--2 Previous Orders
         for products in previousHistory
           if true
             .inner-card.reset-anchor
               .product-inner-card
                 a.product-inner-card__img-box
                   img.product-inner-card__img(src=`/img/${products.pid}.jpg` alt='')
-                form(action="").product-inner-card__main
-                  .product-desc
-                    .product-desc
-                      .product-desc__brand 
-                      a.product-desc__name.products__name
-                        | #{products.name} 
-                      .product-desc__price
-                        span.product-desc__price-act &#x20B9;#{products.price}
-                      .product-desc__extras
-                        .cart__quantity.js--components-function--increment-decrement-input-number
-                          input(type="text" value=`${products.id}` readonly style="display:none" class="incDecCart")
-                          input(type="number" value=`${products.price}` readonly style="display:none" class="priceCart")
-                          button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
-                            | -
-                          input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' value=`${products.quantity}` class="productQuantity")
-                          button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
-                            | +
+                form(action="").product-inner-card__main.product-desc
+                  .product-desc__brand 
+                  a.product-desc__name.products__name
+                    | #{products.name} 
+                  .product-desc__price
+                    span.product-desc__price-act &#x20B9;#{products.price}
+                  .product-desc__extras
+                    .cart__quantity.js--components-function--increment-decrement-input-number
+                      input(type="text" value=`${products.pid}` readonly style="display:none" class="inputId")
+                      input(type="text" value=`${products.name}` readonly style="display:none" class="inputName")
+                      input(type="text" value=`${products.brand}` readonly style="display:none" class="inputBrand")
+                      input(type="text" value=`${products.price}` readonly style="display:none" class="inputPrice")
+                      button(type="button").cart__quantity-btn.cart__quantity-btn--decrease.js--components-function--increment-decrement-input-number__decrease
+                        | -
+                      input.cart__quantity-input.js--components-function--increment-decrement-input-number__input(type='number' min='1' value=`${products.quantity}` class="productQuantity")
+                      button(type="button").cart__quantity-btn.cart__quantity-btn--increase.js--components-function--increment-decrement-input-number__increase
+                        | +
                   if !products.inCart
                     button.addToCartBtn.btn.btn--round.btn--blue.btn--load.btn--margin
                       span.btn--load__content Add to Cart
