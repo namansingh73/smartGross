@@ -31,19 +31,21 @@ const saveTheCart = document.getElementById("saveChanges");
 if(saveTheCart)
 {
     saveTheCart.addEventListener("click",async function(e){
-        const quantityAll = document.getElementsByClassName("cart__quantity");
-        const pairsData = Array.from(quantityAll).map((ele)=>{
-            const quantity = ele.getElementsByClassName("cart__quantity-input")[0].value;
-            const id = ele.getElementsByClassName("incDecCart")[0].value;
-            return {id,quantity};
+        e.preventDefault();
+        const data = [];
+        Array.from(document.getElementsByClassName('product-desc')).forEach(ele => {
+            const pid = ele.getElementsByClassName("inputId")[0].value;
+            const name = ele.getElementsByClassName("inputName")[0].value;
+            const brand = ele.getElementsByClassName("inputBrand")[0].value;
+            const price = ele.getElementsByClassName("inputPrice")[0].value*1;
+            const quantity = ele.getElementsByClassName("cart__quantity-input")[0].value*1;
+            data.push({ pid, name, brand, price, quantity });
         });
-        //console.log(pairsData);
+        console.log(data);
         const res = await axios({
             method:'POST',
             url:'/cartSaveChanges',
-            data:{
-                pairsData
-            }
+            data:data
         });
         location.reload();
     });
@@ -54,17 +56,18 @@ if(saveTheCart)
 
 
 
-const updateButton = document.getElementsByClassName("cart__quantity-btn2");
-const updateAmount = document.getElementsByClassName("cart__quantity-input2");
+const updateButton = document.getElementsByClassName("cart__quantity-btn");
+const updateAmount = document.getElementsByClassName("cart__quantity-input");
 const totalAmount = document.getElementsByClassName("totalAmount");
 const removeEle = document.getElementsByClassName("removeEle");
 
 const updateHelper = function(){
     const quantityAll = document.getElementsByClassName("cart__quantity");
+    //console.log("HI");
     let total = 0;
     Array.from(quantityAll).forEach((ele)=>{
         const quantity = ele.getElementsByClassName("cart__quantity-input")[0].value;
-        const price = ele.getElementsByClassName("priceCart")[0].value;
+        const price = ele.getElementsByClassName("inputPrice")[0].value;
         total += quantity*price;
     });
     Array.from(totalAmount).forEach(ele=>{

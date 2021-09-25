@@ -1,12 +1,12 @@
 const axios = require('axios');
 
 exports.home = async (req,res,next)=>{
-    const smartDataUrl = `http://127.0.0.1:5000/productRecommendation?userId=${req.user.userId}`
+    const smartDataUrl = `https://smart-groceries.herokuapp.com/productRecommendation?userId=${req.user.userId}`
     const smartBag = await axios({
         method: 'GET',
         url: smartDataUrl,
     });
-    const allProdUrl = 'http://127.0.0.1:5000/getProductList';
+    const allProdUrl = 'https://smart-groceries.herokuapp.com/getProductList';
     const allProducts = await axios({
         method: 'GET',
         url:allProdUrl
@@ -57,11 +57,27 @@ exports.cart = (req,res,next)=>{
 
 
 exports.previousOrder = async (req,res,next)=>{
-    const prevOrdersUrl = `http://127.0.0.1:5000/getUserOrderHistory?userId=${req.user.userId}`
+    const prevOrdersUrl = `https://smart-groceries.herokuapp.com/getUserOrderHistory?userId=${req.user.userId}`
     const prevOrders = await axios({
         method: 'GET',
         url: prevOrdersUrl,
     });
+    const ifInCart = (product)=>{
+        const cartProduct = req.user.inCart.find(({pid})=>pid==product.pid);
+        // console.log(cartProduct, product.id);
+        if(cartProduct)
+        {
+            product.quantity = cartProduct.quantity;
+            product.inCart = true;
+            // console.log(product,"Hi");
+        }
+        else
+        {
+            product.inCart = false;
+        }
+        //console.log(product);
+        return product;
+    };
     let totalAmount = 0;
     const productId = new Set();
     const allPrevOrders = [];
@@ -69,7 +85,7 @@ exports.previousOrder = async (req,res,next)=>{
     {
         if(!productId.has(pid))
         {
-            allPrevOrders.push({oid,uid,date,name,pid,price,brand,quantity:1});
+            allPrevOrders.push(ifInCart({date,name,pid,price,brand,quantity:1}));
             totalAmount += price;
             productId.add(pid);
         }

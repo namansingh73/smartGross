@@ -5,37 +5,22 @@ const addAllToCart = document.getElementById("addWholeBag");
 if(addAllToCart)
 {
     addAllToCart.addEventListener("click",async function(e){
-        console.log("Hi");
         e.preventDefault();
+        const data = [];
+        Array.from(document.getElementsByClassName('product-desc')).forEach(ele => {
+            const pid = ele.getElementsByClassName("inputId")[0].value;
+            const name = ele.getElementsByClassName("inputName")[0].value;
+            const brand = ele.getElementsByClassName("inputBrand")[0].value;
+            const price = ele.getElementsByClassName("inputPrice")[0].value*1;
+            const quantity = ele.getElementsByClassName("cart__quantity-input")[0].value*1;
+            data.push({ pid, name, brand, price, quantity });
+        });
+        console.log(data);
         const res = await axios({
             method:'POST',
             url:'/addAllInCart',
-            data:{
-            }
+            data:data
         });
         location.assign("/cart");
     });
 }
-
-// const addToCart = document.getElementsByClassName("product-inner-card__main");
-// Array.from(addToCart).forEach(form=>{
-//     form.addEventListener("submit",async function(e){
-//         e.preventDefault();
-//         const idVar = this.getElementsByClassName("incDecCart")[0].value;
-//         const quanVar = this.getElementsByClassName("productQuantity")[0].value*1;
-//         const btn = this.getElementsByClassName("addToCartBtn")[0];
-//         btn.setAttribute("disabled","disabled");
-//         const res = await axios({
-//             method:'POST',
-//             url:'/cartSmart',
-//             data:{
-//                 idVar,
-//                 quanVar
-//             }
-//         });
-//         btn.getElementsByClassName("btn--load__content")[0].textContent = "Modify in Cart";
-//         setTimeout(()=>{
-//             btn.removeAttribute("disabled");
-//         },1000);
-//     });
-// });
