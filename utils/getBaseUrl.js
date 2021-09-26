@@ -1,3 +1,3 @@
 module.exports = (req) => {
-    return `${req.protocol}://${req.get('host')}`;
+    return `https://${req.get('host')}`;
 };
