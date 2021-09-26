@@ -15,7 +15,7 @@ if(addAllToCart)
             const quantity = ele.getElementsByClassName("cart__quantity-input")[0].value*1;
             data.push({ pid, name, brand, price, quantity });
         });
-        console.log(data);
+        //console.log(data);
         const res = await axios({
             method:'POST',
             url:'/addAllInCart',

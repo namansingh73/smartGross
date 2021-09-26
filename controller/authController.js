@@ -45,7 +45,7 @@ exports.signUp = async(req,res,next)=>{
         await new Email({email:req.body.email,name:req.body.name},getBaseUrl(req)).sendWelcome();
         createSendToken(user,201,res);
     }catch(err){
-        console.log(err);
+        //console.log(err);
         res.status(400).json({
             status:'fail',
             message:'Signup failed! Try again later!'
@@ -209,7 +209,7 @@ exports.forgotPassword = async(req,res,next)=>{
         user.passwordResetToken = undefined;
         user.passwordResetExpires = undefined;
         await user.save({validateBeforeSave:false});
-        console.log(err);
+        //console.log(err);
         res.status(500).json({
             status:'fail',
             message:'There was error sending email'
