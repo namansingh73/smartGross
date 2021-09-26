@@ -49,9 +49,9 @@ html(lang='en')
                 a.product-inner-card__img-box
                   img.product-inner-card__img(src=`/img/${products.pid}.jpg` alt='')
                 form(action="").product-inner-card__main.product-desc
-                  .product-desc__brand 
-                  a.product-desc__name.products__name
-                    | #{products.name} 
+                  .product-desc__brand= products.brand
+                  .product-desc__name.products__name
+                    | #{products.name}
                   .product-desc__price
                     span.product-desc__price-act &#x20B9;#{products.price}
                   .product-desc__extras
