@@ -1,12 +1,6 @@
-const fs = require('fs');
-const path = require('path');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const https = require('https');
 const app = require('./app');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const axios = require('axios');
-const { CLIENT_RENEG_LIMIT } = require('tls');
 // server requests
 
 dotenv.config({path: `./config.env`});
