@@ -37,7 +37,7 @@ body.body.scrollbar
       .products__content
         for products in smartBagData 
           .reset-anchor.products__box
-            .products__img-outer: a(href='./each-product.html')
+            .products__img-outer
               img.products__img(src=`/img/${products.id}.jpg` alt='')
             form(action="").product-desc
               .product-desc__brand #{products.brand}
@@ -71,7 +71,7 @@ body.body.scrollbar
       .products__content
         for products in allData 
           .reset-anchor.products__box
-            .products__img-outer: a(href='./each-product.html')
+            .products__img-outer
               img.products__img(src=`/img/${products.id}.jpg` alt='')
             form(action="").product-desc
               .product-desc__brand #{products.brand}
@@ -146,3 +146,15 @@ body.body.scrollbar
         .footer__copyright
           | Copyright &copy; 2021 Chemistry Gods | All Rights Reserved
   script(src='./index.js')
+  script(type='text/javascript').
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+          navigator.serviceWorker.register('./sw.js').then(function(registration) {
+          // Registration was successful
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+          // registration failed :(
+          console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
