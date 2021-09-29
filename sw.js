@@ -1,5 +1,4 @@
 const staticAssest = [
-    './',
     '/index.css',
     '/index.js',
     '/manifest.json',
