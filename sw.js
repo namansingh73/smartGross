@@ -23,10 +23,10 @@ self.addEventListener('fetch',event=>{
     {
         event.respondWith(cacheFirst(req));
     }
-    // else
-    // {
-    //     event.respondWith(networkFirst(req));
-    // }
+    else
+    {
+        event.respondWith(networkFirst(req));
+    }
 });
 
 async function cacheFirst(req){
