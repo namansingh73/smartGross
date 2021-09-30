@@ -30,4 +30,4 @@ Now run this command in the separate terminal being in the root directory which 
 npm start
 ```
 
-## Get the full documentation from here :- https://namansingh73.github.io/smart-bag-documentation/
+## Get the complete documentation from here :- https://namansingh73.github.io/smart-bag-documentation/
